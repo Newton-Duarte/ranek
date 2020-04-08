@@ -7,6 +7,7 @@
       <li v-for="(produto, index) in usuarioProdutos" :key="index">
         <ProdutoItem :produto="produto">
           <p>{{ produto.descricao }}</p>
+          <button class="deletar" @click="deletarProduto(produto.id)">Deletar</button>
         </ProdutoItem>
       </li>
     </transition-group>
@@ -15,6 +16,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import api from '../../api/api';
 import ProdutoAdicionar from '@/components/ProdutoAdicionar.vue';
 import ProdutoItem from '@/components/ProdutoItem.vue';
 
@@ -28,7 +30,14 @@ export default {
     ...mapState(['login', 'usuario', 'usuarioProdutos'])
   },
   methods: {
-    ...mapActions(['getUsuarioProdutos'])
+    ...mapActions(['getUsuarioProdutos']),
+    deletarProduto(id) {
+      if (confirm('Tem certeza que deseja deletar o produto?')) {
+        api.delete(`/produto/${id}`)
+          .then(() => this.getUsuarioProdutos())
+          .catch(err => console.error(`Ocorreu um erro ao deletar o produto: ${err}`));
+      }
+    }
   },
   watch: {
     login() {
@@ -46,5 +55,29 @@ export default {
 <style scoped>
 h2 {
   margin-bottom: 20px;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translate3d(20px, 0, 0);
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all .3s;
+}
+
+.deletar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: url('~@/assets/remove.svg') no-repeat center center;
+  width: 24px;
+  height: 24px;
+  text-indent: -140px;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
 }
 </style>

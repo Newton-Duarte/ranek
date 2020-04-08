@@ -156,6 +156,14 @@
       "vendido": "false",
       "descricao": "Esse é um novo tablet.",
       "fotos": null
+    },
+    {
+      "nome": "Macbook White",
+      "preco": "1500",
+      "descricao": "Macbook White 2010 usado",
+      "fotos": null,
+      "usuario_id": "newton_@hotmail.com",
+      "id": "j4661lD"
     }
   ]
 }
