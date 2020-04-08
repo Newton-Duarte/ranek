@@ -4,6 +4,10 @@ import Home from '../views/Home.vue'
 import Produto from '../views/Produto.vue'
 import Login from '../views/Login.vue'
 import Usuario from '../views/usuario/Usuario.vue'
+import UsuarioProdutos from '../views/usuario/UsuarioProdutos.vue'
+import UsuarioVendas from '../views/usuario/UsuarioVendas.vue'
+import UsuarioCompras from '../views/usuario/UsuarioCompras.vue'
+import UsuarioEditar from '../views/usuario/UsuarioEditar.vue'
 
 Vue.use(VueRouter)
 
@@ -20,8 +24,29 @@ Vue.use(VueRouter)
   },
   {
     path: '/usuario',
-    name: 'Usuario',
-    component: Usuario
+    component: Usuario,
+    children: [
+      {
+        path: '',
+        name: 'Usuario',
+        component: UsuarioProdutos
+      },
+      {
+        path: 'compras',
+        name: 'UsuarioCompras',
+        component: UsuarioCompras
+      },
+      {
+        path: 'vendas',
+        name: 'UsuarioVendas',
+        component: UsuarioVendas
+      },
+      {
+        path: 'editar',
+        name: 'UsuarioEditar',
+        component: UsuarioEditar
+      }
+    ]
   },
   {
     path: '/produto/:id',

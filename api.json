@@ -10,6 +10,42 @@
       "numero": "25",
       "estado": "RJ",
       "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": "wu3f4j_",
+      "nome": "",
+      "email": "",
+      "senha": "",
+      "cep": "",
+      "rua": "",
+      "numero": "",
+      "bairro": "",
+      "cidade": "",
+      "estado": ""
+    },
+    {
+      "id": "newton_@hotmail.com",
+      "nome": "Newton Duarte",
+      "email": "newton_@hotmail.com",
+      "senha": "123123",
+      "cep": "57035552",
+      "rua": "Rua Doutor Roland Simon",
+      "numero": "123",
+      "bairro": "Jatiúca",
+      "cidade": "Maceió",
+      "estado": "AL"
+    },
+    {
+      "id": "ritaurbana@hotmail.com",
+      "nome": "Rita Soares",
+      "email": "ritaurbana@hotmail.com",
+      "senha": "123123",
+      "cep": "57160000",
+      "rua": "Sem nome",
+      "numero": "200",
+      "bairro": "Barra Nova",
+      "cidade": "Marechal Deodoro",
+      "estado": "AL"
     }
   ],
   "produto": [
