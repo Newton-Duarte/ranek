@@ -1,4 +1,50 @@
 {
+  "transacao": [
+    {
+      "comprador_id": "newton_@hotmail.com",
+      "vendedor_id": "newton_@hotmail.com",
+      "produto": {
+        "nome": "Motorola Moto G5 Plus",
+        "preco": "750",
+        "descricao": "Produto usado",
+        "fotos": null,
+        "vendido": "false",
+        "usuario_id": "newton_@hotmail.com",
+        "id": "ER-abHx"
+      },
+      "endereco": {
+        "cep": "57035552",
+        "rua": "Rua Doutor Roland Simon",
+        "numero": "123",
+        "bairro": "Mangabeiras",
+        "cidade": "Maceió",
+        "estado": "AL"
+      },
+      "id": 1
+    },
+    {
+      "comprador_id": "katiamaria@hotmail.com",
+      "vendedor_id": "andre@origamid.com",
+      "produto": {
+        "id": "notebook",
+        "nome": "Notebook",
+        "usuario_id": "andre@origamid.com",
+        "preco": "4999",
+        "vendido": "false",
+        "descricao": "Esse é um novo notebook.",
+        "fotos": null
+      },
+      "endereco": {
+        "cep": "57020020",
+        "rua": "Rua Fernandes de Barros",
+        "numero": "33",
+        "bairro": "Centro",
+        "cidade": "Maceió",
+        "estado": "AL"
+      },
+      "id": 2
+    }
+  ],
   "usuario": [
     {
       "id": "andre@origamid.com",
@@ -31,7 +77,7 @@
       "cep": "57035552",
       "rua": "Rua Doutor Roland Simon",
       "numero": "123",
-      "bairro": "Jatiúca",
+      "bairro": "Mangabeiras",
       "cidade": "Maceió",
       "estado": "AL"
     },
@@ -45,6 +91,18 @@
       "numero": "200",
       "bairro": "Barra Nova",
       "cidade": "Marechal Deodoro",
+      "estado": "AL"
+    },
+    {
+      "id": "katiamaria@hotmail.com",
+      "nome": "Katia Maria",
+      "email": "katiamaria@hotmail.com",
+      "senha": "123",
+      "cep": "57020020",
+      "rua": "Rua Fernandes de Barros",
+      "numero": "33",
+      "bairro": "Centro",
+      "cidade": "Maceió",
       "estado": "AL"
     }
   ],
@@ -164,6 +222,15 @@
       "fotos": null,
       "usuario_id": "newton_@hotmail.com",
       "id": "j4661lD"
+    },
+    {
+      "nome": "Motorola Moto G5 Plus",
+      "preco": "750",
+      "descricao": "Produto usado",
+      "fotos": null,
+      "vendido": "false",
+      "usuario_id": "newton_@hotmail.com",
+      "id": "ER-abHx"
     }
   ]
 }

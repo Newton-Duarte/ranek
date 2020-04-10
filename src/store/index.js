@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '@/api/api.js';
+import { login } from '@/services.js';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -41,8 +42,8 @@ export default new Vuex.Store({
         .then(res => context.commit('UPDATE_USUARIO_PRODUTOS', res.data))
         .catch(err => console.error(`Ocorreu um erro ao buscar os produtos do usuário: ${err}`));
     },
-    getUsuario(context, payload) {
-      return api.get(`/usuario/${payload}`).then(response => {
+    getUsuario(context) {
+      return api.get('/usuario').then(response => {
         context.commit('UPDATE_USUARIO', response.data);
         context.commit('UPDATE_LOGIN', true);
       });
@@ -50,6 +51,13 @@ export default new Vuex.Store({
     addUsuario(context, payload) {
       context.commit('UPDATE_USUARIO', { id: payload.email });
       return api.post('/usuario', payload);
+    },
+    logarUsuario(context, payload) {
+      return login({
+        username: payload.email,
+        password: payload.senha
+      })
+      .then(res => window.localStorage.token = `Bearer ${res.data.token}`);
     },
     deslogarUsuario(context) {
       context.commit('UPDATE_USUARIO', {
@@ -64,6 +72,7 @@ export default new Vuex.Store({
         cidade: '',
         estado: ''
       });
+      window.localStorage.removeItem('token');
       context.commit('UPDATE_LOGIN', false);
     }
   }

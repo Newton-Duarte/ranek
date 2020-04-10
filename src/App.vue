@@ -13,12 +13,20 @@
 <script>
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
+import api from './api/api';
 
 export default {
   name: 'App',
   components: {
     TheHeader,
     TheFooter
+  },
+  created() {
+    if (window.localStorage.token) {
+      api.post('http://wordpressapilocal.local/wp-json/jwt-auth/v1/token/validate')
+        .then(() => this.$store.dispatch('getUsuario'))
+        .catch(() => window.localStorage.removeItem('token'));
+    }
   }
 }
 </script>
@@ -73,6 +81,12 @@ img {
   transform: scale(1.1);
 }
 
+.btn-disabled,
+.btn-disabled:hover {
+  background: #bbc;
+  transform: scale(1);
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -96,6 +110,7 @@ input, textarea {
   font-size: 1rem;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 input:hover, input:focus,

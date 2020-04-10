@@ -45,6 +45,7 @@ export default {
     }
   },
   created() {
+    document.title = 'Ranek - Usuário | Produtos';
     if (this.login) {
       this.getUsuarioProdutos();
     }
