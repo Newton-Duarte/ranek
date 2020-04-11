@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://wordpressapilocal.local/wp-json/api'
+  baseURL: 'https://ranekapi.newtonduarte.com.br/wp-json/api'
 });
 
 api.interceptors.request.use(function(config) {

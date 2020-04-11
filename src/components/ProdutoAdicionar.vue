@@ -1,5 +1,5 @@
 <template>
-  <form class="adicionar-produto">
+  <form ref="formProduto" class="adicionar-produto">
     <label for="nome">Nome</label>
     <input id="nome" name="nome" type="text" v-model="produto.nome">
     <label for="preco">Preço</label>
@@ -9,6 +9,9 @@
     <label for="descricao">Descrição</label>
     <textarea id="descricao" name="descricao" type="text" v-model="produto.descricao"></textarea>
     <input class="btn" type="button" value="Adicionar Produto" @click.prevent="adicionarProduto">
+    <div class="erros">
+      <ErroNotificacao :erros="erros" />
+    </div>
   </form>
 </template>
 
@@ -24,9 +27,22 @@ export default {
       descricao: '',
       fotos: null,
       vendido: 'false'
-    }
+    },
+    erros: []
   }),
   methods: {
+    validarProduto() {
+      if (
+        this.produto.nome &&
+        this.produto.preco &&
+        this.produto.descricao &&
+        this.$refs.fotos.files.length
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     formatarProduto() {
       const form = new FormData();
       const files = this.$refs.fotos.files;
@@ -43,10 +59,29 @@ export default {
 
       return form;
     },
-    adicionarProduto() {
-      const produto = this.formatarProduto();
-      api.post('/produto', produto)
-        .then(() => this.$store.dispatch('getUsuarioProdutos'));
+    async adicionarProduto(event) {
+      this.erros = [];
+      if (this.validarProduto()) {
+        const produto = this.formatarProduto();
+        const button = event.currentTarget;
+        button.value = 'Adicionando...';
+        button.setAttribute('disabled', '');
+        try {
+          await api.post('/produto', produto);
+          await this.$store.dispatch('getUsuarioProdutos');
+          button.value = 'Adicionar Produto'; 
+          button.removeAttribute('disabled');
+          this.$refs.formProduto.reset();
+          this.$nextTick(() => document.getElementById('nome').focus());
+        } catch (error) {
+          this.erros.push(error.response.data.message);
+          button.value = 'Adicionar Produto';
+          button.removeAttribute('disabled');
+        }
+      } else {
+        this.erros.push('Por favor preencha todos os campos.');
+        this.$nextTick(() => document.getElementById('nome').focus());
+      }
     }
   }
 }
@@ -61,6 +96,10 @@ export default {
 }
 
 .btn {
+  grid-column: 2;
+}
+
+.erros {
   grid-column: 2;
 }
 </style>

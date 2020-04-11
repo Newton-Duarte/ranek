@@ -14,6 +14,11 @@ export default {
 </script>
 
 <style scoped>
+.loading {
+  text-align: center;
+  margin-top: 80px;
+}
+
 .loading span {
   display: inline-block;
   width: 10px;

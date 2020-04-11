@@ -23,7 +23,7 @@ export default {
   },
   created() {
     if (window.localStorage.token) {
-      api.post('http://wordpressapilocal.local/wp-json/jwt-auth/v1/token/validate')
+      api.post('https://ranekapi.newtonduarte.com.br/wp-json/jwt-auth/v1/token/validate')
         .then(() => this.$store.dispatch('getUsuario'))
         .catch(() => window.localStorage.removeItem('token'));
     }

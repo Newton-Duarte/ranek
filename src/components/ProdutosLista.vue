@@ -46,10 +46,8 @@ export default {
       this.produtos = null;
       api.get(this.url)
         .then(res => {
-          setTimeout(() => {
-            this.produtosTotal = Number(res.headers['x-total-count']);
-            this.produtos = res.data;
-          }, 1000)
+          this.produtosTotal = Number(res.headers['x-total-count']);
+          this.produtos = res.data;
         })
         .catch(err => console.error(`Ocorreu um erro ao buscar os produtos: ${err}`));
     }

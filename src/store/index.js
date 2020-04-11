@@ -38,9 +38,8 @@ export default new Vuex.Store({
   },
   actions: {
     getUsuarioProdutos(context) {
-      api.get(`/produto?usuario_id=${context.state.usuario.id}`)
-        .then(res => context.commit('UPDATE_USUARIO_PRODUTOS', res.data))
-        .catch(err => console.error(`Ocorreu um erro ao buscar os produtos do usuário: ${err}`));
+      return api.get(`/produto?usuario_id=${context.state.usuario.id}`)
+        .then(res => context.commit('UPDATE_USUARIO_PRODUTOS', res.data));
     },
     getUsuario(context) {
       return api.get('/usuario').then(response => {

@@ -6,5 +6,5 @@ export function getCep(cep) {
 }
 
 export function login(body) {
-  return api.post('http://wordpressapilocal.local/wp-json/jwt-auth/v1/token', body);
+  return api.post('https://ranekapi.newtonduarte.com.br/wp-json/jwt-auth/v1/token', body);
 }
